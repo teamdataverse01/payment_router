@@ -1,0 +1,54 @@
+Yes — exactly.
+
+You can host a very small smart routing page on:
+
+* [Vercel](https://vercel.com?utm_source=chatgpt.com)
+  OR
+* [Netlify](https://www.netlify.com?utm_source=chatgpt.com)
+
+Then the flow becomes:
+
+```txt id="7w76eo"
+User clicks main link
+↓
+Vercel page detects country/location
+↓
+If USA → redirect to US Systeme.io form/funnel
+If Nigeria → redirect to Nigeria Systeme.io form/funnel
+↓
+Different emails/workflows triggered
+```
+
+This is actually very lightweight.
+
+You only need:
+
+* A simple Next.js page
+* IP geolocation detection
+* Redirect logic
+
+Example:
+
+```txt id="u0t6it"
+dataverse.ai/apply
+```
+
+Then internally:
+
+```txt id="n9rgg6"
+if country == "US":
+    redirect to US funnel
+
+else:
+    redirect to Nigeria funnel
+```
+
+Vercel is good because:
+
+* Fast
+* Free tier
+* Easy deployment
+* Built-in edge/location support
+* Works well with Next.js
+
+This is probably the cleanest solution for what she wants.
