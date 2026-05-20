@@ -1,33 +1,50 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getGeolocationFromRequest, getFunnelURL } from '@/lib/geolocation';
+import { getFunnelURL } from '@/lib/geolocation';
 
-/**
- * Server-side redirect endpoint
- * Detects user location and redirects to appropriate funnel
- */
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Get IP from request headers (x-forwarded-for or x-real-ip)
-    const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||
-      req.headers['x-real-ip'] as string ||
+    const ip =
+      (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||
+      (req.headers['x-real-ip'] as string) ||
       req.socket.remoteAddress ||
       'unknown';
 
-    // Get country from headers (these are set by Vercel or your proxy)
-    const countryCode = (req.headers['x-vercel-ip-country-code'] as string) || 
-      (req.headers['cf-ipcountry'] as string) || 
+    const override = typeof req.query.country === 'string' ? req.query.country : '';
+
+    const countryCode =
+      override ||
+      (req.headers['x-vercel-ip-country'] as string) ||
+      (req.headers['cf-ipcountry'] as string) ||
       'DEFAULT';
 
     const funnelURL = getFunnelURL(countryCode);
 
-    // Log the redirect (useful for analytics)
-    console.log(`[Redirect] IP: ${ip} | Country: ${countryCode} | Target: ${funnelURL}`);
+    console.log(
+      `[Redirect] IP: ${ip} | Country: ${countryCode} | Override: ${override || 'none'} | Target: ${funnelURL}`
+    );
 
-    // Redirect to the appropriate funnel
+    if (req.query.debug === '1') {
+      res.status(200).json({
+        ip,
+        countryCode,
+        override: override || null,
+        funnelURL,
+        headers: {
+          'x-vercel-ip-country': req.headers['x-vercel-ip-country'] || null,
+          'x-vercel-ip-country-region': req.headers['x-vercel-ip-country-region'] || null,
+          'x-vercel-ip-city': req.headers['x-vercel-ip-city'] || null,
+          'cf-ipcountry': req.headers['cf-ipcountry'] || null,
+        },
+      });
+      return;
+    }
+
     res.redirect(302, funnelURL);
   } catch (error) {
     console.error('Redirect error:', error);
-    // Fallback redirect on error
-    res.redirect(302, process.env.NEXT_PUBLIC_DEFAULT_FUNNEL_URL || 'https://courses.systeme.io/default-funnel');
+    res.redirect(
+      302,
+      process.env.NEXT_PUBLIC_DEFAULT_FUNNEL_URL || 'https://courses.systeme.io/default-funnel'
+    );
   }
 }
