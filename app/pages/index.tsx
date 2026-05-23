@@ -68,3 +68,12 @@ const Home: NextPage = () => {
         >
           Click here to get started
         </button>
+        <p style={{ marginTop: '36px', fontSize: '12px', color: '#888' }}>
+          Secure checkout powered by Dataverse Solutions
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
