@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 
 const Home: NextPage = () => {
   const handleNextStep = async () => {
@@ -24,15 +25,15 @@ const Home: NextPage = () => {
         maxWidth: '560px',
         width: '100%',
       }}>
-        <img 
-          src="/dataverse-logo.svg" 
-          alt="Dataverse Solutions" 
-          style={{
-            maxWidth: '280px',
-            height: 'auto',
-            marginBottom: '24px',
-          }}
-        />
+        <div style={{ position: 'relative', width: '280px', height: '80px', margin: '0 auto 24px' }}>
+          <Image 
+            src="/dataverse-logo.svg" 
+            alt="Dataverse Solutions" 
+            fill
+            style={{ objectFit: 'contain' }}
+            priority
+          />
+        </div>
         <h1 style={{
           fontSize: '28px',
           color: '#111',

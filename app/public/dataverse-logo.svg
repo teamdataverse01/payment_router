@@ -1,9 +1,20 @@
-<svg viewBox="0 0 1080 250" xmlns="http://www.w3.org/2000/svg">
-  <!-- Planet -->
-  <circle cx="120" cy="125" r="90" fill="none" stroke="#A071FE" stroke-width="20"/>
-  <ellipse cx="120" cy="125" rx="60" ry="15" fill="none" stroke="#A071FE" stroke-width="15" transform="rotate(45 120 125)"/>
+<svg viewBox="0 0 1080 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D946EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A071FE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
-  <!-- Text -->
-  <text x="250" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="#A071FE">Dataverse</text>
-  <text x="250" y="160" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="#A071FE">Solutions</text>
+  <!-- Main planet circle -->
+  <circle cx="140" cy="125" r="100" fill="none" stroke="url(#purpleGradient)" stroke-width="25" opacity="0.9"/>
+  
+  <!-- Ring accent -->
+  <ellipse cx="140" cy="125" rx="70" ry="20" fill="none" stroke="url(#purpleGradient)" stroke-width="20" opacity="0.7" transform="rotate(-35 140 125)"/>
+  
+  <!-- Text: Dataverse -->
+  <text x="280" y="100" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#purpleGradient)" letter-spacing="-2">Dataverse</text>
+  
+  <!-- Text: Solutions -->
+  <text x="280" y="175" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#purpleGradient)" letter-spacing="-2">Solutions</text>
 </svg>
