@@ -1,7 +1,10 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 
 const Home: NextPage = () => {
+  const handleNextStep = async () => {
+    window.location.href = '/api/redirect';
+  };
+
   return (
     <div style={{
       display: 'flex',
@@ -9,7 +12,7 @@ const Home: NextPage = () => {
       alignItems: 'center',
       minHeight: '100vh',
       fontFamily: 'system-ui, -apple-system, sans-serif',
-      background: 'linear-gradient(135deg, #0070f3 0%, #00c2a8 100%)',
+      background: 'linear-gradient(135deg, #A071FE 0%, #8B5CF6 100%)',
       padding: '20px',
     }}>
       <div style={{
@@ -21,13 +24,22 @@ const Home: NextPage = () => {
         maxWidth: '560px',
         width: '100%',
       }}>
+        <img 
+          src="/dataverse-logo.svg" 
+          alt="Dataverse Solutions" 
+          style={{
+            maxWidth: '280px',
+            height: 'auto',
+            marginBottom: '24px',
+          }}
+        />
         <h1 style={{
           fontSize: '28px',
           color: '#111',
           marginBottom: '12px',
           lineHeight: 1.3,
         }}>
-          Become a Licensed<br />Data Protection Officer
+          Congratulations on taking your first step toward a career in tech.
         </h1>
         <p style={{
           fontSize: '16px',
@@ -35,30 +47,24 @@ const Home: NextPage = () => {
           lineHeight: 1.6,
           marginBottom: '36px',
         }}>
-          Join the Dataverse certification program and launch your career in
-          data protection and privacy compliance.
+          Complete the next step to continue your journey with Dataverse Solutions.
         </p>
-        <Link
-          href="/apply"
+        <button
+          onClick={handleNextStep}
           style={{
             display: 'inline-block',
             padding: '14px 36px',
-            backgroundColor: '#0070f3',
+            backgroundColor: '#A071FE',
             color: 'white',
+            border: 'none',
             borderRadius: '8px',
-            textDecoration: 'none',
+            cursor: 'pointer',
             fontWeight: 700,
             fontSize: '16px',
+            transition: 'background-color 0.3s ease',
           }}
+          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#8B5CF6')}
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#A071FE')}
         >
-          Begin Application
-        </Link>
-        <p style={{ marginTop: '36px', fontSize: '12px', color: '#888' }}>
-          Secure checkout powered by Systeme.io
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default Home;
+          Click here to get started
+        </button>

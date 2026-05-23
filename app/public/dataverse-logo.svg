@@ -1,0 +1,9 @@
+<svg viewBox="0 0 1080 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Planet -->
+  <circle cx="120" cy="125" r="90" fill="none" stroke="#A071FE" stroke-width="20"/>
+  <ellipse cx="120" cy="125" rx="60" ry="15" fill="none" stroke="#A071FE" stroke-width="15" transform="rotate(45 120 125)"/>
+  
+  <!-- Text -->
+  <text x="250" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="#A071FE">Dataverse</text>
+  <text x="250" y="160" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="#A071FE">Solutions</text>
+</svg>

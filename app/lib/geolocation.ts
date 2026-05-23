@@ -32,19 +32,17 @@ export function getGeolocationFromRequest(request: NextRequest): GeoLocation {
 export function getFunnelURL(countryCode: string): string {
   const normalizedCode = countryCode.toUpperCase();
 
-  // US and US territories
-  if (['US', 'PR', 'VI', 'GU', 'AS', 'MP'].includes(normalizedCode)) {
-    return process.env.NEXT_PUBLIC_US_FUNNEL_URL || 'https://courses.systeme.io/us-funnel';
-  }
-
-  // Nigeria
+  // Nigeria - Form submission
   if (normalizedCode === 'NG') {
-    return process.env.NEXT_PUBLIC_NG_FUNNEL_URL || 'https://courses.systeme.io/ng-funnel';
+    return (
+      process.env.NEXT_PUBLIC_NG_FUNNEL_URL ||
+      'https://www.dataverseconsultingsolutions.com/dpobootcamp-68c8959f-2c116596'
+    );
   }
 
-  // Default for all other countries
+  // All other countries - Booking session
   return (
     process.env.NEXT_PUBLIC_DEFAULT_FUNNEL_URL ||
-    'https://courses.systeme.io/default-funnel'
+    'https://www.dataverseconsultingsolutions.com/dpobootcamp-68c8959f-2c116596-3129f127'
   );
 }
