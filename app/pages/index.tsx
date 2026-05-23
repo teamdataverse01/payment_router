@@ -25,9 +25,9 @@ const Home: NextPage = () => {
         maxWidth: '560px',
         width: '100%',
       }}>
-        <div style={{ position: 'relative', width: '280px', height: '80px', margin: '0 auto 24px' }}>
+        <div style={{ position: 'relative', width: '100%', height: '80px', margin: '0 auto 24px' }}>
           <Image 
-            src="/dataverse-logo.svg" 
+            src="/dataverse-logo.png" 
             alt="Dataverse Solutions" 
             fill
             style={{ objectFit: 'contain' }}
