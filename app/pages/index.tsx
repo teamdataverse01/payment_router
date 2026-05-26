@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           lineHeight: 1.6,
           marginBottom: '36px',
         }}>
-          Complete the next step to continue your journey with Dataverse Solutions.
+          Step into your next opportunity.
         </p>
         <button
           onClick={handleNextStep}
@@ -69,9 +69,6 @@ const Home: NextPage = () => {
         >
           Click here to get started
         </button>
-        <p style={{ marginTop: '36px', fontSize: '12px', color: '#888' }}>
-          Secure checkout powered by Dataverse Solutions
-        </p>
       </div>
     </div>
   );
